@@ -2,13 +2,12 @@ function knightMoves(from, dest) {
     const moves = [[1, 2], [-1, 2], [-1, -2], [1, -2], [2, 1], [-2, 1], [-2, -1], [2, -1]];
     const queue = [from];
 
-    for (let i = 0; i < queue.length; i++){
-        console.log(queue[i], i);
-        if (queue[i][0] === dest[0] && queue[i][1] === dest[1]) return display(format(queue[i]));   
-        for (let j = 0; j < moves.length; j++) {
-            const next = [queue[i][0] + moves[j][0], queue[i][1] + moves[j][1]];
-            if (i > 0) if (next[0] === queue[i][2][0] && next[1] === queue[i][2][1]) continue;
-            if (next[0] <= 7 && next[0] >= 0 && next[1] <= 7 && next[1] >= 0) queue.push([...next, [...queue[i]]]);
+    for (pos of queue){
+        if (pos[0] === dest[0] && pos[1] === dest[1]) return display(format(pos));   
+        moves: for (mov of moves) {
+            const next = [pos[0] + mov[0], pos[1] + mov[1]];
+            for (item of queue) if (item[0] === next[0] && item[1] === next[1]) continue moves;
+            if (next[0] <= 7 && next[0] >= 0 && next[1] <= 7 && next[1] >= 0) queue.push([...next, [...pos]]);
         }
     }
 }
@@ -18,8 +17,7 @@ function format(arr) {
     return [arr];
 }
 
-function display (arr) {
+function display(arr) {
     console.log(`=> You made it in ${arr.length - 1} moves! Here's your path:`);
-    for (let i = 0; i < arr.length; i++) console.log(`  [${arr[i]}]`);
-    return arr;
+    for (item of arr) console.log(`  [${item}]`);
 }
