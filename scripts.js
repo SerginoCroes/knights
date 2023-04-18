@@ -19,6 +19,7 @@ function format(arr) {
 }
 
 function display (arr) {
-    console.log(`You made it in ${arr.length} moves! Here's your path:`);
-    for (let i = 0; i < arr.length; i++) console.log(`${arr[i]}`);
+    console.log(`=> You made it in ${arr.length - 1} moves! Here's your path:`);
+    for (let i = 0; i < arr.length; i++) console.log(`  [${arr[i]}]`);
+    return arr;
 }
