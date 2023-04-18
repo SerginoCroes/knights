@@ -13,11 +13,11 @@ function knightMoves(from, dest) {
 }
 
 function format(arr) {
-    if (arr.length === 3) return [...format(arr[2]), [arr[0], arr[1]]];
-    return [arr];
+    return arr.length === 3 ? [...format(arr[2]), [arr[0], arr[1]]] : [arr];
 }
 
 function display(arr) {
+    //const coords = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     console.log(`=> You made it in ${arr.length - 1} moves! Here's your path:`);
-    for (item of arr) console.log(`  [${item}]`);
+    for (item of arr) console.log(typeof coords !== 'undefined' ? `  ${coords[item[0]]}${item[1]}` : `  [${item}]`);
 }
