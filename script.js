@@ -17,7 +17,7 @@ function format(arr) {
 }
 
 function display(arr) {
-    //const coords = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const coords = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     console.log(`=> You made it in ${arr.length - 1} moves! Here's your path:`);
-    for (item of arr) console.log(typeof coords !== 'undefined' ? `  ${coords[item[0]]}${item[1]}` : `  [${item}]`);
+    for (item of arr) console.log(typeof coords !== 'undefined' ? `  ${coords[item[0]]}${item[1] + 1}` : `  [${item}]`);
 }
